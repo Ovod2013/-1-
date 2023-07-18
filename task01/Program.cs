@@ -13,104 +13,89 @@
 // [“1234”, “1567”, “-2”, “computer science”] → [“-2”]
 // [“Russia”, “Denmark”, “Kazan”] → []
 
-Console.Clear();
-Console.WriteLine();
+Console.Clear(); // Очистка консоли
 
-int dlMassiva;
-
+int dlMassiva; // Объявление переменной целочисленного типа
+// Запрос пользователя, хочет ли он самостоятельно ввести элементы массива
 Console.WriteLine($"Если вы желаете самостоятельно ввести элементы массива,");
 Console.Write($"введите 'Д' или 'Y', иначе введите любой другой символ: ");
 string otvet=Console.ReadLine()!;
-
-if (otvet=="Д" | otvet=="д" | otvet== "Y" | otvet == "y")
+// Проверка введённого символа на согласие с учётом возможной ошибки 
+// в раскладке клавиатуры
+if (otvet == "Д" | otvet == "д" | otvet == "L" | otvet == "l")
 {
+    // Запрос желаемой длины массива
     Console.WriteLine($"Введите длину массива в виде числа от 1 до 65000: ");
     dlMassiva = int.Parse(Console.ReadLine()!);
-    otvet="Д";
+    otvet = "Д"; // Приведение введённого символа к единому виду
 }
-else dlMassiva=4;
+else dlMassiva = 4; // Если ответ "Нет", длина массива устанавливается 4
 
-string[] res = new string[dlMassiva];
-// res[0]="Hello";
-// res[1]="2";
-// res[2]="world";
-// res[3]=":-)";
+string[] array = new string[dlMassiva]; // Объявление массива строк длиной 4
 
+// При ответе "Да" в цикле заполнение массива пользователем
 if (otvet=="Д")
 {
     for (int i=0; i<dlMassiva; i++)
     {
         Console.Write($"Введите {i} элемент массива: ");
-        res[i]=Console.ReadLine()!;
+        array[i]=Console.ReadLine()!;
     }
 }
-else 
+else // При ответе "Нет" заполнение массива длиной 4 по умолчанию
 {
-//res[]=["Hello","2", "3", "в"];
-res[0]="Hello";
-res[1]="2";
-res[2]="world";
-res[3]=":-)";
+array[0]="Hello";
+array[1]="2";
+array[2]="world";
+array[3]=":-)";
 }
+// Вывод заполненного по умолчанию массива на консоль 
+//PrintArray(array);
 
 for (int j=0; j<dlMassiva; j++)
 {
-    Console.WriteLine($"{j} элемент массива: {res[j]}");
+    Console.WriteLine($"{j} элемент массива: {array[j]}");
 }
 
+int DlinaElem;
+int kolKorotkixElem=0;
+int kolDlinnyxElem=0;
+int NomerElem=0;
 
-//int dl=dlMassiva;
-int len;
-int kolKor=0;
-int kolDl=0;
-int k=0;
-while (k<dlMassiva)
+while (NomerElem<dlMassiva)
 {
-len = res[k].Length;
-//Console.WriteLine($"Длина {k} элемента массива: {len}, ");
-if (len>3) 
-    {
-        for (int i = k + 1; i < res.Length; i++)
+DlinaElem = array[NomerElem].Length;
+    if (DlinaElem>3) 
         {
-           res[i - 1] = res[i]; 
-            // Console.WriteLine($"00 {res[0]}");
-            // Console.WriteLine($"11 {res[1]}");
-            // Console.WriteLine($"22 {res[2]}");
-            // Console.WriteLine($"33 {res[3]}");
+        for (int i = NomerElem + 1; i < array.Length; i++)
+            {
+            array[i - 1] = array[i]; 
+            }
+        array[array.Length - 1] = "";
+        NomerElem--;
+        dlMassiva--;
+        kolDlinnyxElem++; //Console.WriteLine($"kolDl {kolDl}");
         }
-       res[res.Length - 1] = "";
-            // Console.WriteLine($"0 {res[0]}");
-            // Console.WriteLine($"1 {res[1]}");
-            // Console.WriteLine($"2 {res[2]}");
-            // Console.WriteLine($"3 {res[3]}");
-    
-        k=k-1;
-        dlMassiva=dlMassiva-1;
-    
-    kolDl++; //Console.WriteLine($"kolDl {kolDl}");
-    }
-    else kolKor++; //Console.WriteLine($"kolKor {kolKor}");
-
-k++;
+    else kolKorotkixElem++; //Console.WriteLine($"kolKor {kolKor}");
+NomerElem++;
 }
 
-//Console.WriteLine($"Количество элементов массива длиной 3 и менее символов: {kol}");
+string[] newArray = new string[kolKorotkixElem];
 
-
-
-
-
-            string[] newArray = new string[kolKor];
-
-            for (int i = 0; i < newArray.Length; i++)
-            {
-                newArray[i] = res[i];
-            }
+for (int i = 0; i < newArray.Length; i++)
+    {
+    newArray[i] = array[i];
+    }
 
 Console.WriteLine($"Новый массив длиной {newArray.Length} из элементов длиной менее или равно 3 символов: ");
+
+void PrintArray (string[] array)
+{
+
+}
 
 for (int j=0; j<newArray.Length; j++)
 {
     Console.WriteLine($"{j} элемент массива: {newArray[j]}");
 }
-Console.WriteLine();
+
