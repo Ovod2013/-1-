@@ -49,53 +49,63 @@ array[1]="2";
 array[2]="world";
 array[3]=":-)";
 }
-// Вывод заполненного по умолчанию массива на консоль 
-//PrintArray(array);
+// Вывод массива на консоль 
+Console.WriteLine("Массив для поиска элементов длиной 3 и менее символов: ");
+// Вызов метода и передача ему массива для выдачи на консоль
+PrintArray(array);
 
-for (int j=0; j<dlMassiva; j++)
-{
-    Console.WriteLine($"{j} элемент массива: {array[j]}");
-}
-
+// Объявление переменных, имя описывает функцию
 int DlinaElem;
 int kolKorotkixElem=0;
 int kolDlinnyxElem=0;
 int NomerElem=0;
-
+// Цикл сортировки элементов 
 while (NomerElem<dlMassiva)
 {
-DlinaElem = array[NomerElem].Length;
+DlinaElem = array[NomerElem].Length; // Определение длины элемента 
     if (DlinaElem>3) 
         {
+// Если длина элемента больше 3, перемещение остального массива влево на 1 элемент
         for (int i = NomerElem + 1; i < array.Length; i++)
             {
             array[i - 1] = array[i]; 
             }
+// Последний элемент замещается пустой строкой
         array[array.Length - 1] = "";
+// Так как на место проверенного элемента перемещён новый непроверенный элемент,
+// уменьшаем счётчик текущего элемента на 1 и переменую "длина массива" на 1,
+// так как элементы справа — пустые строки
         NomerElem--;
         dlMassiva--;
-        kolDlinnyxElem++; //Console.WriteLine($"kolDl {kolDl}");
+//Если длина элемента больше 3,увеличение счётчика длинных элементов
+        kolDlinnyxElem++; 
         }
-    else kolKorotkixElem++; //Console.WriteLine($"kolKor {kolKor}");
+//Если длина элемента меньше или равна 3,увеличение счётчика коротких элементов
+    else kolKorotkixElem++;
+// Увеличение счётчика текущего элемента для проверки следующего элемента
 NomerElem++;
 }
-
+// Создание нового массива длиной количества коротких элементов
 string[] newArray = new string[kolKorotkixElem];
-
+// Заполнение нового массива короткими элементами
 for (int i = 0; i < newArray.Length; i++)
     {
     newArray[i] = array[i];
     }
+// Выдача нового элемента на консоль
+Console.WriteLine();
+Console.WriteLine($"Новый массив из {newArray.Length} элементов длиной 3 и менее символов: ");
+// Вызов метода и передача ему нового массива для выдачи на консоль
+PrintArray (newArray);
 
-Console.WriteLine($"Новый массив длиной {newArray.Length} из элементов длиной менее или равно 3 символов: ");
-
+// Метод выдачи элементов массива на консоль
 void PrintArray (string[] array)
 {
-
+    for (int j=0; j<array.Length-1; j++)
+    {
+//Выдача символов кроме последнего на консоль и запятой с пробелом сразу после символа
+        Console.Write($"{array[j]}, ");
+    }
+// Выдача последнего символа без запятой и пробела
+    Console.Write($"{array[array.Length-1]}");
 }
-
-for (int j=0; j<newArray.Length; j++)
-{
-    Console.WriteLine($"{j} элемент массива: {newArray[j]}");
-}
-
