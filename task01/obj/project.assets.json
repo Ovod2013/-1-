@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ovod2013\\-1-\\-1-\\task01\\task01.csproj",
+      "projectUniqueName": "C:\\Users\\Ovod2013\\-1-\\-1--1\\task01\\task01.csproj",
       "projectName": "task01",
-      "projectPath": "C:\\Users\\Ovod2013\\-1-\\-1-\\task01\\task01.csproj",
+      "projectPath": "C:\\Users\\Ovod2013\\-1-\\-1--1\\task01\\task01.csproj",
       "packagesPath": "C:\\Users\\Ovod2013\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ovod2013\\-1-\\-1-\\task01\\obj\\",
+      "outputPath": "C:\\Users\\Ovod2013\\-1-\\-1--1\\task01\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ovod2013\\AppData\\Roaming\\NuGet\\NuGet.Config"
